@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import Program from '../ProgramInfo/Program';
-import ResourceGrid from '../ResourceGrid/ResourceGrid';
+import FindResource from '../FindResources/FindResources';
 
 
 const StartPage = () => {
@@ -13,7 +13,7 @@ const StartPage = () => {
             <Route 
               exact 
               path="/" 
-              render={(props) => <ResourceGrid {...props} />} 
+              render={(props) => <FindResource {...props} />} 
             />
             <Route 
               exact
