@@ -14,20 +14,21 @@ const ResourceCard = ({ resource }) => {
             <Card >
                 <CardContent>
                     <Typography variant="h5" component="h2">
-                        {resource.program_name}
+                        {resource.name}
                     </Typography>
                     <Typography  color="textSecondary" gutterBottom>
-                        A program of {resource.org_name}
+                        A program of {resource.organizationName}
                     </Typography>
                     <Typography variant="body2" component="p">
-                        {resource.program_description}
+                        {resource.description}
                     </Typography>
                     <Typography  color="textSecondary">
                         <br />
-                        {resource.program_website}
+                        {resource.referral.website}
                     </Typography>
                     <CardActions>
-                        <Button variant="contained" size="small" href = {`/programs/${resource.programID}`} >Learn More</Button>
+                       
+                        <Button variant="contained" size="small" href = {`/programs/${resource.externalId}`} >Learn More</Button>
                     </CardActions>    
                 </CardContent>
             </Card>
