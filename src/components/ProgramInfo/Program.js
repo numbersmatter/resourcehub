@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from "react-router-dom"
 import { makeStyles } from '@material-ui/styles'
 import {Grid, Card, CardContent, CardActions, Typography, Button } from '@material-ui/core';
 import firebase from '../../firebase';
@@ -14,6 +15,7 @@ const useStyles = makeStyles({
 
 
 const displayResource = (program) => {
+
     return (
         <Grid item xs={12} >
             <Card>
@@ -80,16 +82,13 @@ const displayResource = (program) => {
                         <br />
                     </Typography>
                     <CardActions>
-                        <Button variant="contained" size="small" href="/" >Back</Button>
+                        <NavLink to={{pathname: `/`}}>Back</NavLink>
                     </CardActions>    
                 </CardContent>
             </Card>
         </Grid>
     )
 }
-
-
-
 
 const Program = (props) => {
     const classes = useStyles();
@@ -113,8 +112,8 @@ const Program = (props) => {
 
     }, [program_ID])
 
-
     return(
+        
         <>
             <Grid container spacing={2} className={classes.resourceContainer}>
                     {programs.map((program) =>(

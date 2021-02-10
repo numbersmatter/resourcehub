@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from "react-router-dom"
 import { Card, Grid, CardContent, CardActions, Typography, Button } from '@material-ui/core';
 // import { makeStyles } from '@material-ui/styles';
 // import firebase from '../../firebase';
@@ -8,7 +9,6 @@ import { Card, Grid, CardContent, CardActions, Typography, Button } from '@mater
 
 const ResourceCard = ({ resource }) => {
     
-
     return (
         <Grid  item xs={12} sm={6}>
             <Card >
@@ -27,8 +27,7 @@ const ResourceCard = ({ resource }) => {
                         {resource.referral.website}
                     </Typography>
                     <CardActions>
-                       
-                        <Button variant="contained" size="small" href = {`/programs/${resource.externalId}`} >Learn More</Button>
+                        <NavLink to={{pathname: `/programs/${resource.externalId}`}}>Learn More</NavLink>
                     </CardActions>    
                 </CardContent>
             </Card>
