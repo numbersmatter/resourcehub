@@ -13,8 +13,7 @@ const StartPage = () => {
 
     return(
       <>
-        <Router>
-          <AuthProvider>
+        
             <NavBar />
             <Switch>
                 <Route 
@@ -30,8 +29,7 @@ const StartPage = () => {
                 <Route path="/signup" component={Signup} />
                 <Route path="/login" component={Login} />
             </Switch>
-          </AuthProvider>
-        </Router>
+        
       </>
     )
 }
