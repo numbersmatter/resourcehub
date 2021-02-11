@@ -54,7 +54,7 @@ export default function Login() {
                 </Grid>
                 <Grid item>
                   <form onSubmit={handleSubmit}>
-                    <Grid container direction="column" spacing={2}>
+                    <Grid container direction="column" spacing={2} alignItems="center">
                       <Grid item>
                         <TextField type="email" inputRef={emailRef} placeholder="Email" fullWidth name="username" variant="outlined" required autoFocus
                         />
