@@ -1,15 +1,26 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
+import "firebase/auth"
 
 const firebaseConfig = {
-    apiKey: "AIzaSyB3yFnkcv5pw28UoP25HiXeXPwTX-UAG8w",
-    authDomain: "api-resource-dev.firebaseapp.com",
-    projectId: "api-resource-dev",
-    storageBucket: "api-resource-dev.appspot.com",
-    messagingSenderId: "806647119220",
-    appId: "1:806647119220:web:8c08f7500812aa899e8021"
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,  
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: "portal-resource",
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
 };
 
-// initialize Firebase
-firebase.initializeApp(firebaseConfig);
 
-export default firebase;
+
+// initialize Firebase
+if (!firebase.apps.length) 
+{
+    firebase.initializeApp(firebaseConfig);
+}
+else 
+{
+    firebase.app(); // if already initialized, use this one
+}
+
+export const auth = firebase.auth()
+export default firebase

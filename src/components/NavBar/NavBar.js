@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { useHistory, NavLink, useLocation } from "react-router-dom";
+import { useAuth } from "../../contexts/AuthContext"
 import { AppBar,
          Toolbar,
          Typography,
@@ -22,7 +24,23 @@ const useStyles = makeStyles((theme) => ({
   }));
   
 export default function NavBar(){
+  const location = useLocation();
   const classes = useStyles();
+
+  const history = useHistory();
+  const { currentUser, logout } = useAuth();
+  const [error, setError] = useState("");
+
+  async function handleLogout() {
+    setError("")
+
+    try {
+      await logout()
+      history.push("/login")
+    } catch {
+      setError("Failed to log out")
+    }
+  }
 
   return (
 
@@ -34,7 +52,17 @@ export default function NavBar(){
         <Typography variant="h6" className={classes.title}>
           Resource Hub
         </Typography>
-        <Button color="inherit">Login</Button>
+        {currentUser?
+          <>
+            <span>Welcome {currentUser.email}</span>
+            <Button variant="link" onClick={handleLogout}>Logout</Button>
+          </>
+          :null
+        }
+        {location.pathname !== '/login' && !currentUser?
+          <NavLink to={{pathname: `/login`}}>Login</NavLink>
+          :null
+        }
       </Toolbar>
     </AppBar>
   )

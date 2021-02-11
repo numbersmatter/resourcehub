@@ -28,7 +28,7 @@ const ResourceGrid = ({isLoading, resources}) => {
                 <Grid container spacing={2} className={classes.resourceContainer}>
                     {resources.map((resource) => (
                         
-                            <ResourceCard key={resource.program_SF_ID} resource={resource}></ResourceCard>
+                            <ResourceCard key={resource.externalID} resource={resource}></ResourceCard>
                         
                     )
                     )}
