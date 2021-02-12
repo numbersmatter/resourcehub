@@ -8,6 +8,7 @@ import Signup from "../Auth/Signup"
 import Login from "../Auth/Login";
 
 
+
 const StartPage = () => {
   //const { currentUser, logout } = useAuth();
 
@@ -32,6 +33,7 @@ const StartPage = () => {
             </Switch>
           </AuthProvider>
         </Router>
+
       </>
     )
 }

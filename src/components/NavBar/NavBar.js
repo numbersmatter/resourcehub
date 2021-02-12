@@ -52,6 +52,7 @@ export default function NavBar(){
         <Typography variant="h6" className={classes.title}>
           Resource Hub
         </Typography>
+
         {currentUser?
           <>
             <span>Welcome {currentUser.email}</span>
@@ -63,6 +64,7 @@ export default function NavBar(){
           <NavLink to={{pathname: `/login`}}>Login</NavLink>
           :null
         }
+
       </Toolbar>
     </AppBar>
   )
