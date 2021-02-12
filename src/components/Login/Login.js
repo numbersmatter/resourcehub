@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from 'react';
+/* import React, { useCallback, useContext } from 'react';
 import { withRouter, Redirect } from 'react-router';
 import firebase from '../../firebase';
 import { AuthContext } from "../../Auth";
@@ -46,4 +46,4 @@ const Login = ({ history }) => {
     );
 };
 
-export default withRouter(Login);
+export default withRouter(Login); */

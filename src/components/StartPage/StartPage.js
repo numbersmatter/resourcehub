@@ -4,8 +4,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import Program from '../ProgramInfo/Program';
 import FindResource from '../FindResources/FindResources';
-import Signup from "../Auth/Signup"
+import Signup from "../Auth/Signup";
 import Login from "../Auth/Login";
+import SignIn from "../../SignIn";
 
 
 
@@ -14,7 +15,6 @@ const StartPage = () => {
 
     return(
       <>
-        <Router>
           <AuthProvider>
             <NavBar />
             <Switch>
@@ -30,9 +30,9 @@ const StartPage = () => {
                 />
                 <Route path="/signup" component={Signup} />
                 <Route path="/login" component={Login} />
+                <Route path="/signin" component={SignIn} />
             </Switch>
           </AuthProvider>
-        </Router>
 
       </>
     )

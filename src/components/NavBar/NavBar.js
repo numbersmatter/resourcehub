@@ -36,7 +36,7 @@ export default function NavBar(){
 
     try {
       await logout()
-      history.push("/login")
+      history.push("/")
     } catch {
       setError("Failed to log out")
     }
@@ -60,10 +60,17 @@ export default function NavBar(){
           </>
           :null
         }
-        {location.pathname !== '/login' && !currentUser?
+        {/* location.pathname !== '/login' && !currentUser?
           <NavLink to={{pathname: `/login`}}>Login</NavLink>
+          :null */
+        }
+
+        {location.pathname !== '/login' && !currentUser?
+          <NavLink to={{pathname: `/signin`}}>Sign in</NavLink>
           :null
         }
+
+        
 
       </Toolbar>
     </AppBar>
