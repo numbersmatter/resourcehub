@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { NavLink } from "react-router-dom"
 import { makeStyles } from '@material-ui/styles'
 import {Grid, Card, CardContent, CardActions, Typography, Button } from '@material-ui/core';
 import firebase from '../../firebase';
@@ -14,15 +15,16 @@ const useStyles = makeStyles({
 
 
 const displayResource = (program) => {
+
     return (
         <Grid item xs={12} >
             <Card>
                 <CardContent>
                     <Typography variant="h5" component="h2">
-                        {program.program_name}
+                        {program.name}
                     </Typography>
                     <Typography  color="textSecondary" gutterBottom>
-                        A program of {program.org_name}
+                        A program of {program.organizationName}
                         <br />
                     </Typography>
                     <Typography variant='subtitle2'>
@@ -30,7 +32,7 @@ const displayResource = (program) => {
                     </Typography>
                     
                     <Typography variant="body2" component="p">
-                        {program.program_description}
+                        {program.description}
                     </Typography>
                     <br />
                     <Typography variant='subtitle2'>
@@ -45,7 +47,7 @@ const displayResource = (program) => {
                         Referral Process:
                     </Typography>
                     <Typography variant="body2" component="p">
-                        {program.referral_process}
+                        {program.referral.process}
                        
                     </Typography>
                     <br />
@@ -53,7 +55,7 @@ const displayResource = (program) => {
                         Referral Contact:
                     </Typography>
                     <Typography variant="body2" component="p">
-                        {program.referral_contact}
+                        {program.referral.contact}
                         
                     </Typography>
                     <br />
@@ -61,7 +63,7 @@ const displayResource = (program) => {
                         Referral Email:
                     </Typography>
                     <Typography variant="body2" component="p">
-                        {program.referral_email}
+                        {program.referral.email}
                         
                     </Typography>
                     <br />
@@ -69,18 +71,18 @@ const displayResource = (program) => {
                         Referral Phone:
                     </Typography>
                     <Typography variant="body2" component="p">
-                        {program.referral_phoneNumber}
+                        {program.referral.phone}
                         
                     </Typography>
                     <br />
 
                     <Typography  color="textSecondary">
                         <br />
-                        {program.program_website}
+                        {program.referral.website}
                         <br />
                     </Typography>
                     <CardActions>
-                        <Button variant="contained" size="small" href="/" >Back</Button>
+                        <NavLink to={{pathname: `/`}}>Back</NavLink>
                     </CardActions>    
                 </CardContent>
             </Card>
@@ -88,30 +90,30 @@ const displayResource = (program) => {
     )
 }
 
-
-
-
 const Program = (props) => {
     const classes = useStyles();
     const { match } = props;
     const { params } = match;
-    const { program_ID} = params;
+    const { program_ID } = params;
     const [programs, setPrograms] = useState([]);
 
     useEffect(() => {
         const fetchProgram = async () => {
             const db = firebase.firestore()
             const programRef = db.collection("programs")
-            const snapshot = await programRef.where('programID', '==', parseInt(`${program_ID}`) ).get()
+            //`const snapshot =` await programRef.where('externalId', '==', parseInt(`${externalId}`) ).get()
+            const recId = program_ID
+            const snapshot = await programRef.where('externalId', '==', recId).get()
             setPrograms(snapshot.docs.map(doc => doc.data()))
+            console.log('record id is: ' + program_ID)
         }
         fetchProgram()
 
 
     }, [program_ID])
 
-
     return(
+        
         <>
             <Grid container spacing={2} className={classes.resourceContainer}>
                     {programs.map((program) =>(

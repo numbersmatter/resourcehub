@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "api-resource-dev"
+    "default": "portal-resource"
+
   }
+  
 }
