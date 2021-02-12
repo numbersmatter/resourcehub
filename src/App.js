@@ -3,15 +3,18 @@ import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
 import StartPage from './components/StartPage/StartPage';
+import { AuthProvider } from './Auth';
 
 const history = createBrowserHistory();
 
 function App() {
   return (
-    <Router history={ history }>
-      <StartPage />
+    <AuthProvider>
+      <Router history={ history }>
+        <StartPage />
 
-    </Router>
+      </Router>
+    </AuthProvider>
   
   );
 }
