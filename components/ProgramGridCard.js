@@ -11,9 +11,9 @@ import { Card, Grid, CardContent, CardActions, Typography, Button } from '@mater
 
 export default function ProgramGridCard({ programs }) {
     return (
-        <Grid container justify='center'>
+        <Grid container spacing={4} justify='center'>
 
-        {programs ? programs.map((program) => <ProgramCard program={program} key={program.externalID} />) : null}
+        {programs ? programs.map((program) => <ProgramCard program={program} key={program.externalId} />) : null}
         </Grid>
     )
 
@@ -40,8 +40,8 @@ function ProgramCard({ program }){
                         {program.referral.website}
                     </Typography>
                     <CardActions>
-                        <Link href={`/programs/${program.externalID}`}>
-                            <a>Learn More </a>
+                        <Link href={`/programs/${program.externalId}`}>
+                            <Button variant="outlined" >Learn More</Button>
                             
                         </Link>
                     </CardActions>    

@@ -5,7 +5,7 @@ import { useState } from 'react';
 
 // Pull the resources from firestore
 
-export async function getServerSideProps(context){
+export async function getServerSideProps(){
     const programsQuery = firestore
         .collection('programs')
         .orderBy('name', 'asc');
