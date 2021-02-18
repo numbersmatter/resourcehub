@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { useHistory, NavLink, useLocation } from "react-router-dom";
-import { useAuth } from "../../contexts/AuthContext"
+import { useAuth } from "../../Auth"
 import { AppBar,
          Toolbar,
          Typography,
@@ -56,6 +56,7 @@ export default function NavBar(){
         {currentUser?
           <>
             <span>Welcome {currentUser.email}</span>
+            <NavLink to={{pathname: `/profile`}}>Profile</NavLink>
             <Button variant="link" onClick={handleLogout}>Logout</Button>
           </>
           :null

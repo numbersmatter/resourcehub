@@ -1,5 +1,4 @@
 import React from 'react';
-import { AuthProvider, useAuth } from "../../contexts/AuthContext"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar';
 import Program from '../ProgramInfo/Program';
@@ -7,15 +6,14 @@ import FindResource from '../FindResources/FindResources';
 import Signup from "../Auth/Signup";
 import Login from "../Auth/Login";
 import SignIn from "../../SignIn";
-
-
+import UpdateProfile from "../Auth/UpdateProfile";
+import PrivateRoute from "../Auth/PrivateRoute";
 
 const StartPage = () => {
   //const { currentUser, logout } = useAuth();
 
     return(
       <>
-          <AuthProvider>
             <NavBar />
             <Switch>
                 <Route 
@@ -31,8 +29,8 @@ const StartPage = () => {
                 <Route path="/signup" component={Signup} />
                 <Route path="/login" component={Login} />
                 <Route path="/signin" component={SignIn} />
+                <PrivateRoute path="/profile" component={UpdateProfile} /> 
             </Switch>
-          </AuthProvider>
 
       </>
     )
