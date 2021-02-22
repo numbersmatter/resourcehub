@@ -105,7 +105,7 @@ export default function NavBar(){
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6" className={classes.title}>
-                Resource Hub {user ? `Welcome ${user.displayName}` : null }
+                Resource Hub Next Demo  {user ? `Welcome ${user.displayName}` : null }
               </Typography>
 
 
