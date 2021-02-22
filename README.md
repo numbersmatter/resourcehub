@@ -2,6 +2,27 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+match /usernames/{username} {
+      	allow read;
+        allow create: if isValidUsername(username);
+      }
+
+function isValidUser(userId) {
+        let isOwner = request.auth.uid == userId;
+      	let username = request.resource.data.username;
+        let createdValidUsername = existsAfter(/databases/$(database)/documents/usernames/$(username));
+        
+        return isOwner && createdValidUsername;
+      }
+      
+      function isValidUsername(username) {
+				let isOwner = request.auth.uid == request.resource.data.uid;
+        let isValidLength = username.size() >= 3 && username.size() <= 15;
+        let isValidUserDoc = getAfter(/databases/$(database)/documents/users/$(request.auth.uid)).data.username == username;
+        
+        return isOwner && isValidLength && isValidUserDoc;     
+      }
+
 First, run the development server:
 
 ```bash
