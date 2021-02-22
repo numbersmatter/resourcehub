@@ -18,6 +18,9 @@ from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import { useState } from 'react';
+import { auth } from '../lib/firebase'
+import { useContext } from 'react';
+import { UserContext } from '../lib/context';
 
 const drawerWidth = 240;
 
@@ -80,6 +83,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function NavBar(){
+  const { user, username } = useContext(UserContext)
     const classes = useStyles();
     const theme = useTheme();
     const [open, setOpen] = useState(false);
@@ -100,7 +104,7 @@ export default function NavBar(){
                 <MenuIcon />
               </IconButton>
               <Typography variant="h6" className={classes.title}>
-                Resource Hub
+                Resource Hub {user ? `Welcome ${user.displayName}` : null }
               </Typography>
 
 
@@ -147,6 +151,14 @@ export default function NavBar(){
           </Link>
         </List>
         <Divider />
+        <List>
+          <Link href="/enter">
+            <ListItem button onClick={() => auth.signOut()} >
+              
+              <ListItemText primary="Sign-Out" />
+            </ListItem>
+          </Link>
+        </List>
       </Drawer>
       </div>
   )
