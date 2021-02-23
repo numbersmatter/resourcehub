@@ -17,7 +17,7 @@ if (typeof importScripts === 'function') {
     //For images
     workbox.routing.registerRoute(
       new RegExp('\.(?:png|gif|jpg|jpeg|webp|svg)$'),
-      new workbox.strategies.CacheFirst ({
+      new workbox.strategies.NetworkFirst ({
           cacheName:'image-caches',
           plugins: [
               new workbox.cacheableResponse.CacheableResponsePlugin({
@@ -38,7 +38,7 @@ if (typeof importScripts === 'function') {
     */
     workbox.routing.registerRoute(
           new RegExp('\.(?:js|css)$'),
-          new workbox.strategies.StaleWhileRevalidate({
+          new workbox.strategies.NetworkFirst({
               cacheName:'js-css-caches',
               plugins: [
                 new workbox.cacheableResponse.CacheableResponsePlugin({
